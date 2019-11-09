@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Tests format: python3 <unittest_file> <INPUT> <TARGET>
+
+TARGET='[1,2,3,4]'
+python3 unittest_flatten_array.py $TARGET #default input array
+
+INPUT='[[1,2,[3]],4]'
+TARGET='[1,2,3,4]'
+python3 unittest_flatten_array.py $INPUT $TARGET
+
+#empty array
+INPUT='[]'
+TARGET='[]'
+python3 unittest_flatten_array.py $INPUT $TARGET
+
+INPUT='[[1,[2,3,[4]],5,6],7]'
+TARGET='[1,2,3,4,5,6,7]'
+python3 unittest_flatten_array.py $INPUT $TARGET
+
+#bad formatted array
+INPUT='[[1,[2-3,[3]]],4]'
+TARGET='[]'
+#python3 unittest_flatten_array.py '[[1,[2 [3]]],4]' '[]'
+python3 unittest_flatten_array.py $INPUT $TARGET
+
